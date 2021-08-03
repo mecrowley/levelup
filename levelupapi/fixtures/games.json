@@ -3,11 +3,24 @@
         "model": "levelupapi.game",
         "pk": 1,
         "fields": {
-            "name": 1,
+            "name": "Chess",
             "game_type": 1,
             "description": "a classic strategy game",
             "number_of_players": 2,
+            "gamer": 1,
             "maker": "antiquity"
+        }
+    },
+    {
+        "model": "levelupapi.game",
+        "pk": 2,
+        "fields": {
+            "name": "Monopoly",
+            "game_type": 1,
+            "description": "it's Monopoly",
+            "number_of_players": 6,
+            "gamer": 1,
+            "maker": "Hasbro"
         }
     }
 ]
