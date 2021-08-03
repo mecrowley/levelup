@@ -3,24 +3,36 @@
         "model": "levelupapi.game",
         "pk": 1,
         "fields": {
-            "name": "Chess",
-            "game_type": 1,
-            "description": "a classic strategy game",
-            "number_of_players": 2,
+            "name": "Welcome To",
+            "description": "description",
+            "maker": "Benoit Turpin",
             "gamer": 1,
-            "maker": "antiquity"
+            "game_type": 1,
+            "number_of_players": 4
         }
     },
     {
         "model": "levelupapi.game",
         "pk": 2,
         "fields": {
-            "name": "Monopoly",
-            "game_type": 1,
-            "description": "it's Monopoly",
-            "number_of_players": 6,
+            "name": "Settlers of Catan",
+            "description": "description",
+            "maker": "Klaus Teuber",
             "gamer": 1,
-            "maker": "Hasbro"
+            "game_type": 1,
+            "number_of_players": 4
+        }
+    },
+    {
+        "model": "levelupapi.game",
+        "pk": 3,
+        "fields": {
+            "name": "Dungeons & Dragons",
+            "description": "description",
+            "maker": "Wizards of the Coast",
+            "gamer": 1,
+            "game_type": 2,
+            "number_of_players": 5
         }
     }
 ]
