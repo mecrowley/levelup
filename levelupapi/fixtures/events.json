@@ -1,0 +1,14 @@
+[
+    {
+        "model": "levelupapi.event",
+        "pk": 1,
+        "fields": {
+            "host": 1,
+            "game": 1,
+            "date": "2021-08-04",
+            "time": "14:30:00",
+            "description": "chess game at cat cafe",
+            "title": "chess and cats"
+        }
+    }
+]
