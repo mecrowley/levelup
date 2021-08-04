@@ -16,3 +16,6 @@ class Game(models.Model):
     skill_level = models.IntegerField()
     gamer = models.ForeignKey("Gamer", on_delete=models.CASCADE)
     maker = models.CharField(max_length=50)
+
+    def __str__(self):
+        return self.title

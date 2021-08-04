@@ -110,7 +110,7 @@ class EventUserSerializer(serializers.ModelSerializer):
     """JSON serializer for event organizer's related Django user"""
     class Meta:
         model = User
-        fields = ['first_name', 'last_name', 'email']
+        fields = ['id', 'first_name', 'last_name', 'email']
 
 
 class EventGamerSerializer(serializers.ModelSerializer):
@@ -133,8 +133,9 @@ class EventSerializer(serializers.ModelSerializer):
     """JSON serializer for events"""
     organizer = EventGamerSerializer(many=False)
     game = GameSerializer(many=False)
+    attendees = EventGamerSerializer(many=True)
 
     class Meta:
         model = Event
         fields = ('id', 'game', 'organizer',
-                  'description', 'date', 'time')
+                  'description', 'date', 'time', 'attendees')
