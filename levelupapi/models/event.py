@@ -20,3 +20,11 @@ class Event(models.Model):
 
     def __str__(self):
         return self.description
+
+    @property
+    def joined(self):
+        return self.__joined
+
+    @joined.setter
+    def joined(self, value):
+        self.__joined = value

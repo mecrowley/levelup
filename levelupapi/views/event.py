@@ -95,12 +95,19 @@ class EventView(ViewSet):
         Returns:
             Response -- JSON serialized list of events
         """
+        # Get the current authenticated user
+        gamer = Gamer.objects.get(user=request.auth.user)
         events = Event.objects.all()
+
+        # Set the `joined` property on every event
+        for event in events:
+            # Check to see if the gamer is in the attendees list on the event
+            event.joined = gamer in event.attendees.all()
 
         # Support filtering events by game
         game = self.request.query_params.get('gameId', None)
         if game is not None:
-            events = events.filter(game__id=game)
+            events = events.filter(game__id=type)
 
         serializer = EventSerializer(
             events, many=True, context={'request': request})
@@ -112,7 +119,7 @@ class EventView(ViewSet):
         # Django uses the `Authorization` header to determine
         # which user is making the request to sign up
         gamer = Gamer.objects.get(user=request.auth.user)
-        
+        event = None
         try:
             # Handle the case if the client specifies a game
             # that doesn't exist
@@ -128,7 +135,6 @@ class EventView(ViewSet):
             try:
                 # Using the attendees field on the event makes it simple to add a gamer to the event
                 # .add(gamer) will insert into the join table a new row the gamer_id and the event_id
-                event = Event.objects.get(pk=pk)
                 event.attendees.add(gamer)
                 return Response({}, status=status.HTTP_201_CREATED)
             except Exception as ex:
@@ -177,4 +183,5 @@ class EventSerializer(serializers.ModelSerializer):
     class Meta:
         model = Event
         fields = ('id', 'game', 'organizer',
-                  'description', 'date', 'time', 'attendees')
+                  'description', 'date', 'time', 'attendees',
+                  'joined')
